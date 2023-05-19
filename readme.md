@@ -9,6 +9,7 @@ List of awesome resources relating to [Arc Browser](https://arc.net/).
 ## 📜 Contents
 
 <!--lint disable awesome-list-item-->
+
 <!-- toc -->
 
 - [🌐 Websites](#%F0%9F%8C%90-websites)
@@ -23,6 +24,7 @@ List of awesome resources relating to [Arc Browser](https://arc.net/).
 - [📝 Contributing](#%F0%9F%93%9D-contributing)
 
 <!-- tocstop -->
+
 <!--lint enable awesome-list-item-->
 
 ## 🌐 Websites
