@@ -1,0 +1,120 @@
+name: CI Flow
+run-name: ${{github.event_name == 'pull_request' && 'Pull Request' || 'Commit' }} on ${{ github.ref }} for ${{ github.actor }}
+
+env:
+  new_contributor: "**Welcome**, new contributor! Thank you for your contribution! ❤️"
+  returning_contributor: "Thank you for your contribution! ❤️"
+  mergable: "PR Is able to be merged 🥳! @4very come take a look."
+  label_good: "Passing"
+  label_bad: "Failing"
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+
+concurrency:
+  group: ${{github.workflow}} - ${{ github.event_name }}(${{ github.ref }})
+  cancel-in-progress: true
+
+jobs:
+  update-toc:
+    name: Update Table of Contents
+    uses: ./.github/workflows/update-toc.yml
+  ab:
+    name: Run awesome-bot
+    uses: ./.github/workflows/awesome-bot.yml
+  al:
+    name: Run awesome-lint
+    needs: [update-toc]
+    uses: ./.github/workflows/awesome-lint.yml
+  feedback:
+    name: Add Feedback to the Pull Request
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && ( success() || failure() )
+    needs: [ab, al]
+    steps:
+      - name: Get Contributor Status
+        uses: actions/github-script@v6
+        id: contributor
+        with:
+          script: |
+            const creator = context.payload.sender.login
+            const opts = github.rest.issues.listForRepo.endpoint.merge({
+              ...context.issue,
+              creator,
+              state: 'all'
+            })
+            const issues = await github.paginate(opts)
+
+            for (const issue of issues) {
+              if (issue.number === context.issue.number) {
+                continue
+              }
+
+              if (issue.pull_request) {
+                return "${{ env.returning_contributor }}"
+              }
+            }
+
+            return "${{ env.new_contributor }}"
+
+      - uses: izhangzhihao/delete-comment@master
+        name: Delete old comments
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_user_name: github-actions[bot]
+          issue_number: ${{ github.event.number }} # remove comments from the current PR
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        id: join
+        with:
+          script: |
+            const ab_md = ${{ needs.ab.outputs.md }}
+            const ab_fail = ${{ needs.ab.outputs.errors }}
+            const al_md = ${{ needs.al.outputs.md }}
+            const al_fail = ${{ needs.al.outputs.errors }}
+
+
+            const header = ${{ steps.contributor.outputs.result }}
+            const val = [header, ab_md, al_md]
+
+
+            const failing = ab_fail || al_fail
+            if (!failing) val.push( "${{env.mergable}}" )
+
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: val.join("\n\n")
+            })
+
+
+            const labels = (await github.rest.issues.listLabelsOnIssue({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            })).data.map((label) => label.name)
+
+
+            const labelToAdd = failing ? "${{ env.label_bad }}" : "${{ env.label_good }}"
+            const labelToRemove = !failing ? "${{ env.label_good }}" : "${{ env.label_bad }}"
+
+            if (labels.includes(labelToAdd)) return
+            else if (labels.includes(labelToRemove)) {
+              github.rest.issues.removeLabel({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: labelToRemove
+              })
+            }
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: [labelToAdd]
+            })

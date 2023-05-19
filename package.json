@@ -1,0 +1,35 @@
+{
+  "name": "awesome-arc",
+  "license": "MIT",
+  "homepage": "https://github.com/4very/awesome-arc/readme.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4very/awesome-arc.git"
+  },
+  "keywords": [
+    "awesome",
+    "awesome-arc",
+    "arc",
+    "arc-browser",
+    "the-browser-company"
+  ],
+  "author": "Avery Sommer <4very.dev@gmail.com>",
+  "scripts": {
+    "gen:toc": "markdown-toc readme.md -i --bullets \"-\" --bullets \"-\" --bullets \"-\"",
+    "commit": "git-cz",
+    "lint": "awesome-lint",
+    "ci:init": "yarn install"
+  },
+  "dependencies": {
+    "awesome-lint": "^0.18.2",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.6.1",
+    "markdown-toc": "^1.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "czConfig": "./lib/cz.config.js"
+    }
+  }
+}

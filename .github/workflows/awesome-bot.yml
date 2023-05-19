@@ -1,0 +1,47 @@
+name: Run awesome_bot
+
+on:
+  workflow_call:
+    outputs:
+      errors:
+        description: "Were errors encountered"
+        value: ${{ jobs.run.outputs.errors }}
+      md:
+        description: "Markdown table result"
+        value: ${{ jobs.run.outputs.md }}
+
+env:
+  no_errors: "✅ [\\`awesome-bot\\`](https://github.com/dkhamsing/awesome_bot) did not find any errors, good job!"
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    outputs:
+      errors: ${{ steps.results.outputs.errors }}
+      md: ${{ steps.results.outputs.md }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby 2.6
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "2.6"
+      - name: Install awesome_bot
+        run: gem install awesome_bot
+      - name: Run awesome_bot
+        run: |
+          ./lib/awesome_bot.sh || :
+      - name: Get Results
+        uses: actions/github-script@v6
+        id: results
+        with:
+          script: |
+            const md = require("./ab-results-readme.md-markdown-table.json")
+            const table = md.error ? md.message : "${{ env.no_errors }}"
+
+            core.setOutput("errors", md.error)
+            core.setOutput("md", JSON.stringify(table))
+            if (md.error) core.setFailed(md.title)
+
+            const { writeFileSync } = require('fs')
+            writeFileSync( process.env['GITHUB_STEP_SUMMARY'], table, {encoding: 'utf8'} )

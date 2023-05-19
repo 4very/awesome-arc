@@ -1,0 +1,67 @@
+{
+  "item-add": {
+    "emoji": "✏️",
+    "code": ":pencil2:",
+    "description": "Add list item."
+  },
+  "item-rm": {
+    "emoji": "🗑️",
+    "code": ":wastebasket:",
+    "description": "Remove list item."
+  },
+  "item-mv": {
+    "emoji": "🚚",
+    "code": ":truck:",
+    "description": "Move item to different section."
+  },
+  "item-fix": {
+    "emoji": "🔗",
+    "code": ":link:",
+    "description": "Fix dead or incorrect link."
+  },
+  "section-add": {
+    "emoji": "📈",
+    "code": ":chart_with_upwards_trend:",
+    "description": "Add section to list."
+  },
+  "section-rm": {
+    "emoji": "📉",
+    "code": ":chart_with_downwards_trend:",
+    "description": "Remove section from list."
+  },
+  "section-mv": {
+    "emoji": "📇",
+    "code": ":card_index:",
+    "description": "Move subsection to different section of list."
+  },
+  "rearrange": {
+    "emoji": "♻️",
+    "code": ":recycle:",
+    "description": "Rearrange items in list."
+  },
+  "style": {
+    "emoji": "🎨",
+    "code": ":art:",
+    "description": "Adjust aesthetic of list."
+  },
+  "lint": {
+    "emoji": "🚨",
+    "code": ":rotating_light:",
+    "description": "Fix linter warnings."
+  },
+  "chore": {
+    "emoji": "📦️",
+    "code": ":package:",
+    "description": "Chore."
+  },
+  "deploy": {
+    "emoji": "🚀",
+    "code": ":rocket:",
+    "description": "Deployment."
+  },
+  "meta": {
+    "emoji": "🚸",
+    "code": ":children_crossing:",
+    "description": "None of the above."
+  }
+}

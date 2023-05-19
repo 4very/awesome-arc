@@ -1,0 +1,44 @@
+name: Run awesome-lint
+
+on:
+  workflow_call:
+    outputs:
+      errors:
+        description: "Were errors encountered"
+        value: ${{ jobs.run.outputs.errors }}
+      md:
+        description: "Markdown table result"
+        value: ${{ jobs.run.outputs.md }}
+env:
+  no_errors: "✅ [\\`awesome-lint\\`](https://github.com/sindresorhus/awesome-lint) did not find any errors, good job!"
+
+jobs:
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    outputs:
+      errors: ${{ steps.results.outputs.errors }}
+      md: ${{ steps.results.outputs.md }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+      - name: Setup
+        run: yarn install
+      - name: Run Linter
+        uses: actions/github-script@v6
+        id: results
+        with:
+          script: |
+            const results = await require('./lib/lint.js')
+            const md = results.error ? results.message : "${{env.no_errors}}"
+
+            core.setOutput("errors", results.error)
+            core.setOutput("md", JSON.stringify(md))
+            if (results.error) core.setFailed(results.title)
+
+            const { writeFileSync } = require('fs')
+            writeFileSync( process.env['GITHUB_STEP_SUMMARY'], md, {encoding: 'utf8'} )
