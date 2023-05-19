@@ -63,5 +63,15 @@
     "emoji": "🚸",
     "code": ":children_crossing:",
     "description": "None of the above."
+  },
+  "dev": {
+    "emoji": "🧑‍💻",
+    "code": ":technologist:",
+    "description": "Improve developer experience."
+  },
+  "ci": {
+    "emoji": "🔮",
+    "code": ":crystal_ball:",
+    "description": "Adjust CI Pipeline."
   }
 }
