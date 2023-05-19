@@ -6,7 +6,7 @@ List of awesome resources relating to [Arc Browser](https://arc.net/).
 
 > Note: I am in no way related to Arc or The Browser Company of New York.
 
-## Contents
+## 📜 Contents
 
 <!-- toc -->
 
@@ -74,7 +74,7 @@ Apps that interface nicely with Arc and have a similar design philosophy.
 - [Raycast](https://www.raycast.com/) - Supercharged Spotlight replacement.
   - [Arc Extension](https://www.raycast.com/the-browser-company/arc) - Arc extension for Raycast.
 
-## Development
+## 🧑‍💻 Development
 
 Various resources for developing on Arc and for Arc.
 
@@ -86,7 +86,7 @@ Various resources for developing on Arc and for Arc.
 
 ## 💸 Funding
 
-I made and maintain this list because I love Arc and The Browser Company's philosophy on the internet machine they're creating. If you wish to contribute money please send it directly to The Browser Company [here](https://browsercompany.substack.com/subscribe).
+I made and maintain this list because I love Arc and The Browser Company's philosophy on the internet computer they're creating. If you wish to contribute money please send it directly to The Browser Company [here](https://browsercompany.substack.com/subscribe).
 
 ## 📝 Contributing
 
