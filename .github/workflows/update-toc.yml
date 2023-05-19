@@ -24,4 +24,4 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add readme.md
           git restore .
-          git diff-index --quiet HEAD || { git commit -m "Updated Table of Contents [skip ci]" && git push origin; }
+          git diff-index --quiet HEAD || { git commit -m "bot: 🤖 Updated Table of Contents [skip ci]" && git push origin; }
