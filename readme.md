@@ -16,7 +16,7 @@ List of awesome resources relating to [Arc Browser](https://arc.net/).
   - [📇 Lists](#%F0%9F%93%87-lists)
 - [🧩 Extensions](#%F0%9F%A7%A9-extensions)
 - [📦 Complementary Applications](#%F0%9F%93%A6-complementary-applications)
-- [Development](#development)
+- [🧑‍💻 Development](#%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB-development)
 - [🌱 Miscellaneous](#%F0%9F%8C%B1-miscellaneous)
 - [💸 Funding](#%F0%9F%92%B8-funding)
 - [📝 Contributing](#%F0%9F%93%9D-contributing)
