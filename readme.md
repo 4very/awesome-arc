@@ -34,9 +34,7 @@ Websites related to Arc and The Browser Company.
 - [Arc Subreddit](https://www.reddit.com/r/ArcBrowser/)
 - [Arc Discord](https://discord.com/invite/arcinternet)
 
-### 🪧 Official
-
-> ( I cannot think of a good emoji for this section please recommend "The Arc Emoji" )
+### ![Arc Icon](https://raw.githubusercontent.com/BurAndBY/awesome-arc/main/images/arc.png) Official
 
 - [The Browser Company](https://thebrowser.company/)
   - [Twitter](https://twitter.com/browsercompany)
