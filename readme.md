@@ -51,7 +51,7 @@ Awesome boosts to enhance your Arc Browser Experience. Learn about boosts [here]
 
 - [SpotOn](https://github.com/SenpaiHunters/SpotOn) - Spotify Web Player overhaul, can also be used as an [extension](#🧩-extensions).
 - [Enhanced Twitter](https://github.com/Xilantra/enhanced-twitter) - Lightweight boost to hide some Twitter UI elements.
-- [Mindful Media](https://github.com/qu8n/arc-boost-mindful-media) - Mindfulness reminder before entering a distracting website.
+- [Mindful Media](https://github.com/qu8n/mindful-media) - Mindfulness reminder before entering a distracting website.
 - [Google Links](https://arc.net/e/2CADECD1-9839-4057-9EA9-A9988ABC4B92) - Add your own sites to Google's toolbar.
 - [Retro GitHub](https://arcboosts.com/boosts/25/retro-github) - Windows 95 inspired GitHub theme.
 
