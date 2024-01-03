@@ -5,3 +5,4 @@ https://twitter.com/madebychichi
 https://browsercompany.substack.com/
 https://github.com/SenpaiHunters/SpotOn
 https://www.reddit.com/r/ArcBrowser/
+https://raw.githubusercontent.com/BurAndBY/awesome-arc/main/images/arc.png
