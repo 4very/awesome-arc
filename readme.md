@@ -13,7 +13,7 @@ List of awesome resources relating to [Arc Browser](https://arc.net/).
 <!-- toc -->
 
 - [🌐 Websites](#%F0%9F%8C%90-websites)
-  - [🪧 Official](#%F0%9F%AA%A7-official)
+  - [![Arc Icon](https://raw.githubusercontent.com/BurAndBY/awesome-arc/main/images/arc.png) Official](#arc-iconhttpsrawgithubusercontentcomburandbyawesome-arcmainimagesarcpng-official)
 - [🚀 Boosts](#%F0%9F%9A%80-boosts)
   - [📇 Lists](#%F0%9F%93%87-lists)
 - [🧩 Extensions](#%F0%9F%A7%A9-extensions)
